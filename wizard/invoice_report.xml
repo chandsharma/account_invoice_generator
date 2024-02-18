@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="account_invoice_excel_report" model="ir.ui.view">
+            <field name="name">account.invoice.excel.report</field>
+            <field name="model">account.invoice.excel.report</field>
+            <field name="arch" type="xml">
+                <form string="Account Invoice Report">
+                    <group>
+                        <group>
+                            <field name="date_from" required="1"/>
+                        </group>
+                        <group>
+                            <field name="date_to" required="1"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button name="print_excel_report" string="Print" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="account_invoice_excel_report_action" model="ir.actions.act_window">
+            <field name="name">Account Invoice Report</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">account.invoice.excel.report</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="account_invoice_excel_report"/>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem id="menu_finance_invoice_report_settings"
+                  name="Invoice Report"
+                  parent="account.menu_finance_reports"
+                  action="account_invoice_excel_report_action"/>
+
+        
+
+    </data>
+</odoo>
